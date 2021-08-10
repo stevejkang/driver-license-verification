@@ -17,14 +17,14 @@ async function setupDocument(app: INestApplication) {
     .setDescription(
       'An unofficial driver license verification crawler API service with live status check support.',
     )
-    .setVersion('0.0')
+    .setVersion('Alpha')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document, {
     customCss: `
       .topbar { display: none; }
-      .swagger-ui { padding-top: 50px }`,
+      .swagger-ui { padding-top: 50px; }`,
     customSiteTitle: 'Driver License Verification API',
   });
 }
