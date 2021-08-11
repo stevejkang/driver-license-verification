@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
-async function bootstrap() {
+export async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   setupDocument(app);
@@ -11,7 +11,7 @@ async function bootstrap() {
   await app.listen(3000);
 }
 
-async function setupDocument(app: INestApplication) {
+export async function setupDocument(app: INestApplication) {
   const config = new DocumentBuilder()
     .setTitle('Driver License Verification API')
     .setDescription('An unofficial driver license verification crawler API service with live status check support.')
