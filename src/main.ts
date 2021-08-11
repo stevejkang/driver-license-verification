@@ -14,9 +14,7 @@ async function bootstrap() {
 async function setupDocument(app: INestApplication) {
   const config = new DocumentBuilder()
     .setTitle('Driver License Verification API')
-    .setDescription(
-      'An unofficial driver license verification crawler API service with live status check support.',
-    )
+    .setDescription('An unofficial driver license verification crawler API service with live status check support.')
     .setVersion('Alpha')
     .build();
 
