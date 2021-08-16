@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import * as qs from 'qs';
 import { JSDOM } from 'jsdom';
 import { IRequestData } from './IRequestData';
+import { InternalApiRequestError } from './InternalApiRequestError';
 
 export class Efine {
   static async retrieve(data: IRequestData): Promise<boolean> {
@@ -39,7 +40,7 @@ export class Efine {
       });
       return serialNumberMatched && licenseIsValid;
     } catch (e) {
-      console.log(e);
+      throw new InternalApiRequestError(e);
     }
   }
 }
