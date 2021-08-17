@@ -2,7 +2,8 @@ import { Controller, HttpCode, Post, Body } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CreateDriverLicenseVerificationUseCase } from '../../application/CreateDriverLicenseVerificationUseCase/CreateDriverLicenseVerificationUseCase';
 import { DriverLicenseVerificationControllerRequestBody } from './DriverLicenseVerificationControllerRequestBody';
-import { DriverLicenseVerificationControllerResponse } from './DriverLicenseVerificationControllerResponse';
+import { DriverLicenseVerificationControllerSuccessfulResponse } from './DriverLicenseVerificationControllerSuccessfulResponse';
+import { DriverLicenseVerificationControllerFailedResponse } from './DriverLicenseVerificationControllerFailedResponse';
 
 @ApiTags('Verification')
 @Controller('verification')
@@ -12,13 +13,17 @@ export class DriverLicenseVerificationController {
   @Post()
   @HttpCode(200)
   @ApiOperation({ summary: 'Verify License Information' })
-  @ApiResponse({ status: 200, description: 'Response Successfully', type: DriverLicenseVerificationControllerResponse })
+  @ApiResponse({ status: 200, description: 'Response Successfully', type: DriverLicenseVerificationControllerSuccessfulResponse })
+  @ApiResponse({ status: 400, description: 'Bad Request', type: DriverLicenseVerificationControllerFailedResponse })
   @ApiResponse({ status: 403, description: 'Forbidden' })
   @ApiResponse({ status: 500, description: 'Internal Server Error' })
-  async useCase(@Body() requestBody: DriverLicenseVerificationControllerRequestBody): Promise<DriverLicenseVerificationControllerResponse> {
+  async useCase(
+    @Body() requestBody: DriverLicenseVerificationControllerRequestBody,
+  ): Promise<DriverLicenseVerificationControllerSuccessfulResponse | DriverLicenseVerificationControllerFailedResponse> {
     const result = await this.createDriverLicenseVerificationUseCase.execute({ ...requestBody });
     return {
-      code: 'SUCCESS',
+      isSuccess: true,
+      verificationResult: 'VALID',
     };
   }
 }
