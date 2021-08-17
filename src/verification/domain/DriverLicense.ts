@@ -6,6 +6,7 @@ interface DriverLicenseProps {
   driverBirthDay: string;
   licenseNumber: string;
   serialNumber: string;
+  verified?: boolean;
 }
 
 export class DriverLicense extends AggregateRoot<DriverLicenseProps> {
@@ -35,5 +36,9 @@ export class DriverLicense extends AggregateRoot<DriverLicenseProps> {
 
   get serialNumber(): string {
     return this.props.serialNumber;
+  }
+
+  get verified(): boolean {
+    return this.props.verified ?? false;
   }
 }
