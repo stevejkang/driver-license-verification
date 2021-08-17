@@ -11,7 +11,7 @@ export class DriverLicenseVerificationController {
 
   @Post()
   @HttpCode(200)
-  @ApiOperation({ summary: '면허정보 검증' })
+  @ApiOperation({ summary: 'Verify License Information' })
   @ApiResponse({ status: 200, description: 'Response Successfully', type: DriverLicenseVerificationControllerResponse })
   @ApiResponse({ status: 403, description: 'Forbidden' })
   @ApiResponse({ status: 500, description: 'Internal Server Error' })
