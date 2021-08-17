@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import * as qs from 'qs';
 import { JSDOM } from 'jsdom';
 import { IRequestData } from './IRequestData';
@@ -6,7 +6,7 @@ import { InternalApiRequestError } from './InternalApiRequestError';
 
 export class SafeDriving {
   static async retrieve(data: IRequestData): Promise<boolean> {
-    const body = qs.stringify({
+    const requestBody = qs.stringify({
       menuCode: 'MN-PO-1241',
       licenLocal: '11',
       sName: data.driverName,
@@ -18,13 +18,11 @@ export class SafeDriving {
       serialNum: data.serialNumber,
     });
 
-    const config = {
+    const response = await axios({
       method: 'POST',
       url: 'https://www.safedriving.or.kr/LnrForRtnLicns/LnrForRtnLicnsTruthYnComplete.do',
-      data: body,
-    };
-
-    const response = await axios(config as AxiosRequestConfig);
+      data: requestBody,
+    });
 
     try {
       const responseHtml = new JSDOM(response.data);

@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import * as qs from 'qs';
 import { JSDOM } from 'jsdom';
 import { IRequestData } from './IRequestData';
@@ -6,7 +6,7 @@ import { InternalApiRequestError } from './InternalApiRequestError';
 
 export class Efine {
   static async retrieve(data: IRequestData): Promise<boolean> {
-    const body = qs.stringify({
+    const requestBody = qs.stringify({
       checkPage: 2,
       flag: 'searchPage',
       regYear: data.driverBirthdayYear,
@@ -20,13 +20,11 @@ export class Efine {
       ghostNo: data.serialNumber,
     });
 
-    const config = {
+    const response = await axios({
       method: 'POST',
       url: 'https://www.efine.go.kr/licen/truth/licenTruth.do?subMenuLv=010100',
-      data: body,
-    };
-
-    const response = await axios(config as AxiosRequestConfig);
+      data: requestBody,
+    });
 
     try {
       const responseHtml = new JSDOM(response.data);
