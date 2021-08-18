@@ -14,7 +14,7 @@ export class DriverLicenseVerificationController {
   @HttpCode(200)
   @ApiOperation({ summary: 'Verify License Information' })
   @ApiResponse({ status: 200, description: 'Response Successfully', type: DriverLicenseVerificationControllerSuccessfulResponse })
-  @ApiResponse({ status: 400, description: 'Bad Request', type: DriverLicenseVerificationControllerFailedResponse })
+  @ApiResponse({ status: 400, description: 'Bad Request or Failed', type: DriverLicenseVerificationControllerFailedResponse })
   @ApiResponse({ status: 403, description: 'Forbidden' })
   @ApiResponse({ status: 500, description: 'Internal Server Error' })
   async useCase(
