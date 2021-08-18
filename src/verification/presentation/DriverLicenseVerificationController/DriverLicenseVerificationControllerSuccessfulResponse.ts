@@ -11,7 +11,6 @@ export class DriverLicenseVerificationControllerSuccessfulResponse {
     enum: ['VALID', 'INVALID'],
     enumName: 'VerificationResult',
     description: 'Verification Result',
-    required: false,
   })
   verificationResult?: string;
 }
