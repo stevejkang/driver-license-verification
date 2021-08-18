@@ -24,8 +24,8 @@ export class CreateDriverLicenseVerificationUseCase implements UseCase<CreateDri
       throw new Error('Serial number is required or has wrong format');
     }
 
-    console.log(
-      await SafeDriving.retrieve({
+    const verification = await Promise.all([
+      SafeDriving.retrieve({
         driverName,
         driverBirthdayYear: driverBirthday.split('-')[0],
         driverBirthdayMonth: driverBirthday.split('-')[1],
@@ -33,21 +33,22 @@ export class CreateDriverLicenseVerificationUseCase implements UseCase<CreateDri
         licenseNumber,
         serialNumber,
       }),
-    );
+      Efine.retrieve({
+        driverName,
+        driverBirthdayYear: driverBirthday.split('-')[0],
+        driverBirthdayMonth: driverBirthday.split('-')[1],
+        driverBirthdayDay: driverBirthday.split('-')[2],
+        licenseNumber,
+        serialNumber,
+      }),
+    ]).then((value) => {
+      return value;
+    });
 
-    console.log(
-      await Efine.retrieve({
-        driverName,
-        driverBirthdayYear: driverBirthday.split('-')[0],
-        driverBirthdayMonth: driverBirthday.split('-')[1],
-        driverBirthdayDay: driverBirthday.split('-')[2],
-        licenseNumber,
-        serialNumber,
-      }),
-    );
+    const isValid = verification.some((request) => request);
 
     return {
-      code: 'SUCCESS',
+      code: isValid ? 'SUCCESS' : 'FAILED',
     };
   }
 }

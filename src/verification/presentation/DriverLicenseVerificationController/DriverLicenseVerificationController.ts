@@ -20,10 +20,10 @@ export class DriverLicenseVerificationController {
   async useCase(
     @Body() requestBody: DriverLicenseVerificationControllerRequestBody,
   ): Promise<DriverLicenseVerificationControllerSuccessfulResponse | DriverLicenseVerificationControllerFailedResponse> {
-    const result = await this.createDriverLicenseVerificationUseCase.execute({ ...requestBody });
+    const useCase = await this.createDriverLicenseVerificationUseCase.execute({ ...requestBody });
     return {
       isSuccess: true,
-      verificationResult: 'VALID',
+      verificationResult: useCase.code === 'SUCCESS' ? 'VALID' : 'INVALID',
     };
   }
 }
