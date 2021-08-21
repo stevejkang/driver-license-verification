@@ -26,9 +26,10 @@ export class DriverLicenseVerificationController {
         verificationResult: useCase.code === 'SUCCESS' ? 'VALID' : 'INVALID',
       });
     } catch (error) {
+      const errorMessage = error.name === 'InternalApiRequestError' ? 'Internal server error occured.' : error.message;
       response.status(HttpStatus.BAD_REQUEST).json({
         isSuccess: false,
-        errorMessage: error.message,
+        errorMessage: errorMessage,
       });
     }
   }
