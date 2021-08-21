@@ -29,6 +29,7 @@ export class DriverLicenseVerificationController {
       const errorMessage = error.name === 'InternalApiRequestError' ? 'Internal server error occured.' : error.message;
       response.status(HttpStatus.BAD_REQUEST).json({
         isSuccess: false,
+        errorCode: 0,
         errorMessage: errorMessage,
       });
     }
