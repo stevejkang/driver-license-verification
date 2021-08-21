@@ -8,6 +8,11 @@ export class DriverLicenseVerificationControllerFailedResponse {
   isSuccess: boolean;
 
   @ApiProperty({
+    description: 'Error Code',
+  })
+  errorCode: number;
+
+  @ApiProperty({
     description: 'Error Message',
   })
   errorMessage: string;
