@@ -1,4 +1,4 @@
-import { UseCase } from 'src/shared/core/UseCase';
+import { UseCase } from '../../../shared/core/UseCase';
 import { CreateDriverLicenseVerificationUseCaseRequest } from './dto/CreateDriverLicenseVerificationUseCaseRequest';
 import { CreateDriverLicenseVerificationUseCaseResponse } from './dto/CreateDriverLicenseVerificationUseCaseResponse';
 import { Efine } from './api/Efine';
