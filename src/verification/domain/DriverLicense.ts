@@ -1,5 +1,5 @@
-import { AggregateRoot } from 'src/shared/core/AggregateRoot';
-import { Result } from 'src/shared/core/Result';
+import { AggregateRoot } from '../../shared/core/AggregateRoot';
+import { Result } from '../../shared/core/Result';
 
 interface DriverLicenseProps {
   driverName: string;
