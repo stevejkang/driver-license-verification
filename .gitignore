@@ -7,6 +7,9 @@
 # build
 /dist/
 
+# Env
+.env
+
 # Logs
 logs
 *.log
