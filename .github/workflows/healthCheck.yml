@@ -19,5 +19,12 @@ jobs:
           node-version: '14.x'
       - name: Install packages
         run: yarn
+      - name: Create .env
+        run: |
+          touch .env
+          echo TEST_DRIVER_NAME=${{ secrets.TEST_DRIVER_NAME }} >> .env
+          echo TEST_DRIVER_BIRTHDAY=${{ secrets.TEST_DRIVER_BIRTHDAY }} >> .env
+          echo TEST_LICENSE_NUMBER=${{ secrets.TEST_LICENSE_NUMBER }} >> .env
+          echo TEST_SERIAL_NUMBER=${{ secrets.TEST_SERIAL_NUMBER }} >> .env
       - name: Run e2e tests
         run: yarn test:e2e
