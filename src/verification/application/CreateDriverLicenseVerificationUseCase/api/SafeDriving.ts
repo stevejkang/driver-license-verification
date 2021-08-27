@@ -28,12 +28,6 @@ export class SafeDriving {
       const responseHtml = new JSDOM(response.data);
       const licenseIsValid = responseHtml.window.document.querySelector('.contents > .ul_list > li:nth-child(2)').innerHTML === '도로교통공단 전산 자료와 일치합니다.';
       const serialNumberMatched = responseHtml.window.document.querySelector('.contents > .ul_list > li:nth-child(1)').innerHTML === '암호일련번호가 일치합니다.';
-      console.log(serialNumberMatched);
-      console.log(licenseIsValid);
-      console.log({
-        a: responseHtml.window.document.querySelector('.contents > .ul_list > li:nth-child(2)').innerHTML,
-        b: responseHtml.window.document.querySelector('.contents > .ul_list > li:nth-child(1)').innerHTML,
-      });
       return serialNumberMatched && licenseIsValid;
     } catch (e) {
       throw new InternalApiRequestError(e);

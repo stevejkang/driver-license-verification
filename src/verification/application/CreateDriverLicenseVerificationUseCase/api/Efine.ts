@@ -28,7 +28,6 @@ export class Efine {
 
     try {
       const responseHtml = new JSDOM(response.data);
-      console.log(responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td'));
       const resultElementCount = responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td').childElementCount;
       if (resultElementCount === 1) {
         // TODO: Message Check
@@ -36,12 +35,6 @@ export class Efine {
       }
       const licenseIsValid = responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td > b:nth-child(1) > font').textContent === '전산 자료와 일치 합니다.';
       const serialNumberMatched = responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td > b:nth-child(2) > font').textContent === '식별번호가 일치합니다.';
-      console.log(serialNumberMatched);
-      console.log(licenseIsValid);
-      console.log({
-        a: responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td > b:nth-child(1) > font').textContent,
-        b: responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td > b:nth-child(2) > font').textContent,
-      });
       return serialNumberMatched && licenseIsValid;
     } catch (e) {
       throw new InternalApiRequestError(e);
