@@ -3,7 +3,7 @@ import { Result } from '../../shared/core/Result';
 
 interface DriverLicenseProps {
   driverName: string;
-  driverBirthDay: string;
+  driverBirthday: string;
   licenseNumber: string;
   serialNumber: string;
   verified?: boolean;
@@ -26,8 +26,8 @@ export class DriverLicense extends AggregateRoot<DriverLicenseProps> {
     return this.props.driverName;
   }
 
-  get driverBirthDay(): string {
-    return this.props.driverBirthDay;
+  get driverBirthday(): string {
+    return this.props.driverBirthday;
   }
 
   get licenseNumber(): string {
