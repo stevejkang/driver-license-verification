@@ -30,6 +30,18 @@ export class DriverLicense extends AggregateRoot<DriverLicenseProps> {
     return this.props.driverBirthday;
   }
 
+  get driverBirthdayYear(): string {
+    return this.driverBirthday.split('-')[0];
+  }
+
+  get driverBirthdayMonth(): string {
+    return this.driverBirthday.split('-')[1];
+  }
+
+  get driverBirthdayDay(): string {
+    return this.driverBirthday.split('-')[2];
+  }
+
   get licenseNumber(): string {
     return this.props.licenseNumber;
   }
