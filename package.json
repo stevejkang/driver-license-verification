@@ -77,7 +77,9 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
-      "src/main.ts"
+      "src/main.ts",
+      "src/shared/ValueObject.ts",
+      "src/shared/AggregateRoot.ts"
     ]
   },
   "repository": {
