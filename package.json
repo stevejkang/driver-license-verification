@@ -78,8 +78,8 @@
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "src/main.ts",
-      "src/shared/ValueObject.ts",
-      "src/shared/AggregateRoot.ts"
+      "src/shared/core/ValueObject.ts",
+      "src/shared/core/AggregateRoot.ts"
     ]
   },
   "repository": {
