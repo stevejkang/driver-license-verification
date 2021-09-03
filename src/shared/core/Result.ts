@@ -23,7 +23,7 @@ export class Result<T> {
 
   public get value(): T {
     if (!this.isSuccess) {
-      throw new Error("Can't get the value of an error result. Use 'errorValue' instead.");
+      throw new Error(this.error as string);
     }
 
     return this._value;
