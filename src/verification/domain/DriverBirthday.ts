@@ -28,4 +28,16 @@ export class DriverBirthday extends ValueObject<DriverBirthdayProps> {
   get value(): string {
     return this.props.value;
   }
+
+  get year(): string {
+    return this.props.value.split('-')[0];
+  }
+
+  get month(): string {
+    return this.props.value.split('-')[1];
+  }
+
+  get date(): string {
+    return this.props.value.split('-')[2];
+  }
 }
