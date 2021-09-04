@@ -15,4 +15,12 @@ describe('DriverBirthday', () => {
     expect(driverBirthdayUndefinedOrError.errorValue()).toBe(DRIVER_BIRTHDAY_SHOULD_BE_DEFINED);
     expect(driverBirthdayWrongFormatOrError.errorValue()).toBe(DRIVER_BIRTHDAY_HAS_WRONG_FORMAT);
   });
+
+  it('should return specific year, month and date', () => {
+    const driverBirthday = DriverBirthday.create('2000-01-01');
+
+    expect(driverBirthday.value.year).toEqual('2000');
+    expect(driverBirthday.value.month).toEqual('01');
+    expect(driverBirthday.value.date).toEqual('01');
+  });
 });
