@@ -1,5 +1,9 @@
 import { Result } from '../../shared/core/Result';
+import { DriverBirthday } from './DriverBirthday';
 import { DriverLicense } from './DriverLicense';
+import { DriverName } from './DriverName';
+import { LicenseNumber } from './LicenseNumber';
+import { SerialNumber } from './SerialNumber';
 
 describe('DriverLicense', () => {
   let license: Result<DriverLicense>;
@@ -11,7 +15,12 @@ describe('DriverLicense', () => {
   };
 
   beforeEach(() => {
-    license = DriverLicense.createNew({ ...licenseObject });
+    license = DriverLicense.createNew({
+      driverName: DriverName.create(licenseObject.driverName).value,
+      driverBirthday: DriverBirthday.create(licenseObject.driverBirthday).value,
+      licenseNumber: LicenseNumber.create(licenseObject.licenseNumber).value,
+      serialNumber: SerialNumber.create(licenseObject.serialNumber).value,
+    });
   });
 
   it('should be created', () => {
@@ -19,10 +28,10 @@ describe('DriverLicense', () => {
   });
 
   it('should return props', () => {
-    expect(license.value.driverName).toEqual(licenseObject.driverName);
-    expect(license.value.driverBirthday).toEqual(licenseObject.driverBirthday);
-    expect(license.value.licenseNumber).toEqual(licenseObject.licenseNumber);
-    expect(license.value.serialNumber).toEqual(licenseObject.serialNumber);
+    expect(license.value.driverName.value).toEqual(licenseObject.driverName);
+    expect(license.value.driverBirthday.value).toEqual(licenseObject.driverBirthday);
+    expect(license.value.licenseNumber.value).toEqual(licenseObject.licenseNumber);
+    expect(license.value.serialNumber.value).toEqual(licenseObject.serialNumber);
     expect(license.value.verified).toBeFalsy();
   });
 });
