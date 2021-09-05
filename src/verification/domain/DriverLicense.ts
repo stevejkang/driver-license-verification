@@ -1,11 +1,15 @@
 import { AggregateRoot } from '../../shared/core/AggregateRoot';
 import { Result } from '../../shared/core/Result';
+import { DriverBirthday } from './DriverBirthday';
+import { DriverName } from './DriverName';
+import { LicenseNumber } from './LicenseNumber';
+import { SerialNumber } from './SerialNumber';
 
 interface DriverLicenseProps {
-  driverName: string;
-  driverBirthday: string;
-  licenseNumber: string;
-  serialNumber: string;
+  driverName: DriverName;
+  driverBirthday: DriverBirthday;
+  licenseNumber: LicenseNumber;
+  serialNumber: SerialNumber;
   verified?: boolean;
 }
 
@@ -22,31 +26,19 @@ export class DriverLicense extends AggregateRoot<DriverLicenseProps> {
     return this.create({ ...props }, 0);
   }
 
-  get driverName(): string {
+  get driverName(): DriverName {
     return this.props.driverName;
   }
 
-  get driverBirthday(): string {
+  get driverBirthday(): DriverBirthday {
     return this.props.driverBirthday;
   }
 
-  get driverBirthdayYear(): string {
-    return this.driverBirthday.split('-')[0];
-  }
-
-  get driverBirthdayMonth(): string {
-    return this.driverBirthday.split('-')[1];
-  }
-
-  get driverBirthdayDay(): string {
-    return this.driverBirthday.split('-')[2];
-  }
-
-  get licenseNumber(): string {
+  get licenseNumber(): LicenseNumber {
     return this.props.licenseNumber;
   }
 
-  get serialNumber(): string {
+  get serialNumber(): SerialNumber {
     return this.props.serialNumber;
   }
 
