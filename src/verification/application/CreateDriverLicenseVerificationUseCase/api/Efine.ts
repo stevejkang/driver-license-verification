@@ -27,7 +27,6 @@ export class Efine {
     });
 
     try {
-      // throw new InternalApiRequestError('test error from efine');
       const responseHtml = new JSDOM(response.data);
       const resultElementCount = responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td').childElementCount;
       if (resultElementCount === 1) {
