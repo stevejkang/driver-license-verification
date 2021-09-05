@@ -3,57 +3,34 @@ import { CreateDriverLicenseVerificationUseCaseRequest } from './dto/CreateDrive
 import { CreateDriverLicenseVerificationUseCaseResponse } from './dto/CreateDriverLicenseVerificationUseCaseResponse';
 import { Efine } from './api/Efine';
 import { SafeDriving } from './api/SafeDriving';
+import { DriverLicense } from '../../domain/DriverLicense';
+import { DriverName } from '../../domain/DriverName';
+import { DriverBirthday } from '../../domain/DriverBirthday';
+import { LicenseNumber } from '../../domain/LicenseNumber';
+import { SerialNumber } from '../../domain/SerialNumber';
 
 export class CreateDriverLicenseVerificationUseCase implements UseCase<CreateDriverLicenseVerificationUseCaseRequest, CreateDriverLicenseVerificationUseCaseResponse> {
   async execute(request: CreateDriverLicenseVerificationUseCaseRequest): Promise<CreateDriverLicenseVerificationUseCaseResponse> {
     const { driverName, driverBirthday, licenseNumber, serialNumber } = request;
 
-    if (!driverName || driverName.length < 2) {
-      throw new Error('Driver name is required or has wrong format');
-    }
+    const requestedDriverLicense = DriverLicense.createNew({
+      driverName: DriverName.create(driverName).value,
+      driverBirthday: DriverBirthday.create(driverBirthday).value,
+      licenseNumber: LicenseNumber.create(licenseNumber).value,
+      serialNumber: SerialNumber.create(serialNumber).value,
+    });
 
-    if (!driverBirthday || driverBirthday.length !== 10) {
-      throw new Error('Driver birthday is required or has wrong format');
-    }
-
-    if (!licenseNumber || licenseNumber.length !== 15) {
-      throw new Error('License number is required or has wrong format');
-    }
-
-    if (!serialNumber || serialNumber.length !== 6) {
-      throw new Error('Serial number is required or has wrong format');
-    }
-
-    const verification = await Promise.any([
-      SafeDriving.retrieve({
-        driverName,
-        driverBirthdayYear: driverBirthday.split('-')[0],
-        driverBirthdayMonth: driverBirthday.split('-')[1],
-        driverBirthdayDay: driverBirthday.split('-')[2],
-        licenseNumber,
-        serialNumber,
-      }),
-      Efine.retrieve({
-        driverName,
-        driverBirthdayYear: driverBirthday.split('-')[0],
-        driverBirthdayMonth: driverBirthday.split('-')[1],
-        driverBirthdayDay: driverBirthday.split('-')[2],
-        licenseNumber,
-        serialNumber,
-      }),
-    ])
-      .then((value) => {
-        return value;
+    const verification = await Promise.any([SafeDriving.retrieve(requestedDriverLicense.value), Efine.retrieve(requestedDriverLicense.value)])
+      .then((value: DriverLicense) => {
+        return value.verified;
       })
       .catch((error) => {
         console.log(error);
         throw new Error('All verification methods have been an outage. This incident will be reported. Please visit ${url}');
       });
 
-    const isValid = Boolean(verification) === true;
-
     return {
-      code: isValid ? 'SUCCESS' : 'FAILED',
+      code: Boolean(verification) === true ? 'SUCCESS' : 'FAILED',
     };
   }
 }
