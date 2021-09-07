@@ -16,5 +16,8 @@ scripts:
   - npm run test
   - npm run test:cov
 after_success:
-  - codecov --disable=gcov
-  - docker build -t driver-license-verification .
+- codecov --disable=gcov
+- docker build -t driver-license-verification .
+notifications:
+  slack:
+    secure: k9pY3m7NQy7Pus/Of2bHN5FPj7FAGuVOEF5LnPIPFSa+PJTnZQ94o+kdsWpDfROLdssYNdlAx8IQUjW7VZerZMUGcc6dQBUNNWiXpj7DIdb3YnLRF051Z8M7upxr4FipkkLGlFc6AslTsNcbJgXWiGo3dz6DxiZXhLXwxM4R+FfRLJlTMHHNeUCyi0PlFXJdwMStkXVoROLJwARDk8ECLxdaBmca1lj7EuA3Rk4HQJCcvZC9Uqgr9X1yyVa9pzmUS7HHqurXwVlzNb3y1sD+QkwZcnYHVh1qWuYEPaHmFi9KQCnF43lbjUH7fx/540r2rLoaeYd6spZX2kPGR159VFdq660r/bGuivw/yFkZTGhcQHPZSSDOXLb7h4SCPRV7Egl1EEC0u7Dq/qcSDI/T7XJ7sHEK9r/qtXDDQo990ote1G3FEctD1OizFVhXwshFPVLyqlF6VaqhvguB5vlrGH/QFZU9IClDRNA0mkCTV0tGHsmHjpwh2ops3bISqznQCEF1cSUlvQ7ZqDPuZ65o/p0MFCXF1+6NWnvr4s3h90cdHlVveeMKFAZtwUBAem/skDHx8IH+GlUNvHQxj/BhSeFWnWTQgdvtOA6YNeVjNfmi8LeiSLkYVJx2vAGohTYnpiW2woR2aAENwJh3LwyrK0ViTRecb0WYLQQof0Ikfcc=
