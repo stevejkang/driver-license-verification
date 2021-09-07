@@ -26,7 +26,7 @@ export class CreateDriverLicenseVerificationUseCase implements UseCase<CreateDri
       })
       .catch((error) => {
         console.log(error);
-        throw new Error('All verification methods have been an outage. This incident will be reported. Please visit ${url}');
+        throw new Error('All verification methods have been an outage. This incident will be reported. Please visit https://dlicense-status.stevetech.dev/');
       });
 
     return {
