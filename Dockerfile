@@ -1,9 +1,7 @@
 FROM node:alpine AS build
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install
 COPY . .
-RUN npm run build && npm prune --production
+RUN yarn install && npm run build && npm prune --production
 
 FROM node:alpine
 WORKDIR /app
