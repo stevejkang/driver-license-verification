@@ -1,6 +1,6 @@
 {
   "name": "driver-license-verification",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "An unofficial driver license verification crawler API service with live status check support.",
   "author": "stevejkang <iam@juneyoung.io>",
   "private": true,
