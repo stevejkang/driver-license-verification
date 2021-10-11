@@ -1,6 +1,6 @@
 {
   "name": "driver-license-verification",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "An unofficial driver license verification crawler API service with live status check support.",
   "author": "stevejkang <iam@juneyoung.io>",
   "private": true,
@@ -17,7 +17,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s"
   },
   "dependencies": {
     "@nestjs/axios": "^0.0.1",
