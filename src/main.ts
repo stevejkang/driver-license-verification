@@ -19,11 +19,7 @@ export async function bootstrap() {
 }
 
 export async function setupDocument(app: INestApplication) {
-  const config = new DocumentBuilder()
-    .setTitle('Driver License Verification API')
-    .setDescription('An unofficial driver license verification crawler API service with live status check support.')
-    .setVersion('Alpha')
-    .build();
+  const config = new DocumentBuilder().setTitle('Driver License Verification API').setDescription('An unofficial driver license verification crawler API service.').setVersion('Alpha').build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document, {
