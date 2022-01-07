@@ -110,3 +110,9 @@
 * Upgrade node version to 15 ([2c65f70](https://github.com/stevejkang/driver-license-verification/commit/2c65f70))
 * Use `Promise.all` and send result to controller ([03b76b2](https://github.com/stevejkang/driver-license-verification/commit/03b76b2))
 * Use `Promise.any` for processing api calls ([71e6920](https://github.com/stevejkang/driver-license-verification/commit/71e6920))
+
+
+## 0.1.0 (2022-01-07)
+
+* Ready for public distribution ([0729305](https://github.com/stevejkang/driver-license-verification/commit/0729305))
+* Remove sentry dsn url for personal development ([471644e](https://github.com/stevejkang/driver-license-verification/commit/471644e))
