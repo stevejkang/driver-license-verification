@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { init as SentryInit } from '@sentry/node';
+// import { init as SentryInit } from '@sentry/node';
 import { AppModule } from './app.module';
 
 export async function bootstrap() {
@@ -11,9 +11,9 @@ export async function bootstrap() {
   setupDocument(app);
 
   /** Sentry **/
-  SentryInit({
-    dsn: 'https://8fa9e854aa514b9baf1e9aad57559de9@o493438.ingest.sentry.io/5924939',
-  });
+  // SentryInit({
+  //   dsn: '',
+  // });
 
   await app.listen(3000);
 }
