@@ -1,3 +1,12 @@
+## <small>0.1.1 (2022-01-18)</small>
+
+* Change `Promise.any` order and remove outdated url ([1b28892](https://github.com/stevejkang/driver-license-verification/commit/1b28892))
+* Edit changelog version order ([d8fa143](https://github.com/stevejkang/driver-license-verification/commit/d8fa143))
+* Fix request body for efine changes ([ed07884](https://github.com/stevejkang/driver-license-verification/commit/ed07884))
+* Revert efine request field `ghostNo` removal ([ff39bad](https://github.com/stevejkang/driver-license-verification/commit/ff39bad))
+
+
+
 ## 0.1.0 (2022-01-07)
 
 * Ready for public distribution ([0729305](https://github.com/stevejkang/driver-license-verification/commit/0729305))
