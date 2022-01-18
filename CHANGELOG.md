@@ -1,3 +1,16 @@
+## <small>0.1.2 (2022-01-18)</small>
+
+* Bump ansi-regex from 5.0.0 to 5.0.1 ([9664680](https://github.com/stevejkang/driver-license-verification/commit/9664680))
+* Bump axios from 0.21.1 to 0.21.2 ([b72bd31](https://github.com/stevejkang/driver-license-verification/commit/b72bd31))
+* Bump tmpl from 1.0.4 to 1.0.5 ([24dae88](https://github.com/stevejkang/driver-license-verification/commit/24dae88))
+* Fix dependency conflicts ([98c13d2](https://github.com/stevejkang/driver-license-verification/commit/98c13d2))
+* Fix dependency conflicts ([31a199a](https://github.com/stevejkang/driver-license-verification/commit/31a199a))
+* Fix node version for ci/cd ([d546ec5](https://github.com/stevejkang/driver-license-verification/commit/d546ec5))
+* Fix travis ci build status badge ([d6b86c2](https://github.com/stevejkang/driver-license-verification/commit/d6b86c2))
+* Update some npm packages ([2c3f1e8](https://github.com/stevejkang/driver-license-verification/commit/2c3f1e8))
+
+
+
 ## <small>0.1.1 (2022-01-18)</small>
 
 * Change `Promise.any` order and remove outdated url ([1b28892](https://github.com/stevejkang/driver-license-verification/commit/1b28892))
