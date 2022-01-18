@@ -17,7 +17,8 @@ export class Efine {
       licenNo1: data.licenseNumber.value.split('-')[1],
       licenNo2: data.licenseNumber.value.split('-')[2],
       licenNo3: data.licenseNumber.value.split('-')[3],
-      ghostNo: data.serialNumber,
+      btnSearch_msg0_new: '1A1A1A',
+      Security_Mag: '1A1A1A',
     });
 
     const response = await axios({
