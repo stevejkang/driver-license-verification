@@ -20,13 +20,13 @@ export class CreateDriverLicenseVerificationUseCase implements UseCase<CreateDri
       serialNumber: SerialNumber.create(serialNumber).value,
     });
 
-    const verification = await Promise.any([SafeDriving.retrieve(requestedDriverLicense.value), Efine.retrieve(requestedDriverLicense.value)])
+    const verification = await Promise.any([Efine.retrieve(requestedDriverLicense.value), SafeDriving.retrieve(requestedDriverLicense.value)])
       .then((value: DriverLicense) => {
         return value.verified;
       })
       .catch((error) => {
         console.log(error);
-        throw new Error('All verification methods have been an outage. This incident will be reported. Please visit https://dlicense-status.stevetech.dev/');
+        throw new Error('All verification methods have been an outage. This incident will be reported.');
       });
 
     return {
