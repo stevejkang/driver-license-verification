@@ -1,10 +1,9 @@
-<!-- Steps to update version
-1. Bump version in package.json
-2. npm run changelog
-3. Commit package.json and CHANGELOG.md
-4. Tag
-5. Push commit and tag
-6. Release -->
+## 0.1.0 (2022-01-07)
+
+* Ready for public distribution ([0729305](https://github.com/stevejkang/driver-license-verification/commit/0729305))
+* Remove sentry dsn url for personal development ([471644e](https://github.com/stevejkang/driver-license-verification/commit/471644e))
+
+
 
 ## <small>0.0.1 (2021-10-11)</small>
 
@@ -112,7 +111,10 @@
 * Use `Promise.any` for processing api calls ([71e6920](https://github.com/stevejkang/driver-license-verification/commit/71e6920))
 
 
-## 0.1.0 (2022-01-07)
-
-* Ready for public distribution ([0729305](https://github.com/stevejkang/driver-license-verification/commit/0729305))
-* Remove sentry dsn url for personal development ([471644e](https://github.com/stevejkang/driver-license-verification/commit/471644e))
+<!-- Steps to update version
+1. Bump version in package.json
+2. npm run changelog
+3. Commit package.json and CHANGELOG.md
+4. Tag
+5. Push commit and tag
+6. Release -->
