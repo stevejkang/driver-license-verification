@@ -1,3 +1,9 @@
+## 0.2.0 (2022-01-19)
+
+* Support verification method without `serialNumber` ([07fc103](https://github.com/stevejkang/driver-license-verification/commit/07fc103))
+
+
+
 ## <small>0.1.2 (2022-01-18)</small>
 
 * Bump ansi-regex from 5.0.0 to 5.0.1 ([9664680](https://github.com/stevejkang/driver-license-verification/commit/9664680))
