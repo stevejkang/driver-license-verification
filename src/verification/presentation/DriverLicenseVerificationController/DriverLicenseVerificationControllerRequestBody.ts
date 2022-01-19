@@ -23,6 +23,7 @@ export class DriverLicenseVerificationControllerRequestBody {
   @ApiProperty({
     description: 'Serial Number',
     example: 'XXXXXX',
+    required: false,
   })
   serialNumber: string;
 }

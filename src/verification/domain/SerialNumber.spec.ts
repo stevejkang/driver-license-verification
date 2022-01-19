@@ -3,7 +3,11 @@ import { SerialNumber, SERIAL_NUMBER_HAS_WRONG_FORMAT, SERIAL_NUMBER_SHOULD_BE_D
 describe('SerialNumber', () => {
   it('should be created', () => {
     const serialNumberOrError = SerialNumber.create('S90CSA');
+    const serialNumberNullOrError = SerialNumber.create(null);
+    const serialNumberEmptyOrError = SerialNumber.create('');
     expect(serialNumberOrError.isSuccess).toBeTruthy();
+    expect(serialNumberNullOrError.isSuccess).toBeTruthy();
+    expect(serialNumberEmptyOrError.isSuccess).toBeTruthy();
   });
 
   it('should return fail on undefined or validation error', () => {

@@ -33,4 +33,39 @@ describe('DriverLicenseVerificationController (e2e)', () => {
         verificationResult: 'VALID',
       });
   });
+
+  it('/verification (POST) - serialNumber is empty', () => {
+    const configService = app.get(ConfigService);
+
+    return request(app.getHttpServer())
+      .post('/verification')
+      .send({
+        driverName: configService.get('TEST_DRIVER_NAME'),
+        driverBirthday: configService.get('TEST_DRIVER_BIRTHDAY'),
+        licenseNumber: configService.get('TEST_LICENSE_NUMBER'),
+        serialNumber: '',
+      })
+      .expect(200)
+      .expect({
+        isSuccess: true,
+        verificationResult: 'VALID',
+      });
+  });
+
+  it('/verification (POST) - serialNumber not given', () => {
+    const configService = app.get(ConfigService);
+
+    return request(app.getHttpServer())
+      .post('/verification')
+      .send({
+        driverName: configService.get('TEST_DRIVER_NAME'),
+        driverBirthday: configService.get('TEST_DRIVER_BIRTHDAY'),
+        licenseNumber: configService.get('TEST_LICENSE_NUMBER'),
+      })
+      .expect(200)
+      .expect({
+        isSuccess: true,
+        verificationResult: 'VALID',
+      });
+  });
 });

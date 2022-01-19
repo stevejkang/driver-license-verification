@@ -19,7 +19,7 @@ export class Efine {
       licenNo3: data.licenseNumber.value.split('-')[3],
       btnSearch_msg0_new: '1A1A1A',
       Security_Mag: '1A1A1A',
-      ghostNo: data.serialNumber,
+      ghostNo: data.serialNumber.value,
     });
 
     const response = await axios({
@@ -30,29 +30,19 @@ export class Efine {
 
     try {
       const responseHtml = new JSDOM(response.data);
-      const resultElementCount = responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td').childElementCount;
-      if (resultElementCount === 1) {
-        // TODO: Message Check
-        return DriverLicense.create(
-          {
-            driverName: data.driverName,
-            driverBirthday: data.driverBirthday,
-            licenseNumber: data.licenseNumber,
-            serialNumber: data.serialNumber,
-            verified: false,
-          },
-          data.id,
-        ).value;
-      }
       const licenseIsValid = responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td > b:nth-child(1) > font').textContent === '전산 자료와 일치 합니다.';
-      const serialNumberMatched = responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td > b:nth-child(2) > font').textContent === '식별번호가 일치합니다.';
+      const serialNumberMatched =
+        data.serialNumber.value !== null
+          ? responseHtml.window.document.querySelector('#licen-truth > tbody > tr:nth-child(1) > td > b:nth-child(2) > font').textContent === '식별번호가 일치합니다.'
+          : false;
+      const isVerified = data.serialNumber.value !== null ? licenseIsValid && serialNumberMatched : licenseIsValid;
       return DriverLicense.create(
         {
           driverName: data.driverName,
           driverBirthday: data.driverBirthday,
           licenseNumber: data.licenseNumber,
           serialNumber: data.serialNumber,
-          verified: serialNumberMatched && licenseIsValid,
+          verified: isVerified,
         },
         data.id,
       ).value;

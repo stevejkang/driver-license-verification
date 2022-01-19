@@ -11,7 +11,8 @@ import { SerialNumber } from '../../domain/SerialNumber';
 
 export class CreateDriverLicenseVerificationUseCase implements UseCase<CreateDriverLicenseVerificationUseCaseRequest, CreateDriverLicenseVerificationUseCaseResponse> {
   async execute(request: CreateDriverLicenseVerificationUseCaseRequest): Promise<CreateDriverLicenseVerificationUseCaseResponse> {
-    const { driverName, driverBirthday, licenseNumber, serialNumber } = request;
+    const { driverName, driverBirthday, licenseNumber } = request;
+    const serialNumber = request.serialNumber ?? null;
 
     const requestedDriverLicense = DriverLicense.createNew({
       driverName: DriverName.create(driverName).value,
