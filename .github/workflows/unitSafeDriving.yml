@@ -1,0 +1,32 @@
+name: SafeDriving
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 15 * * *'
+
+jobs:
+  test-unit-efine:
+    name: Test SafeDriving
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - name: Install packages
+        run: yarn
+      - name: Create .env
+        run: |
+          touch .env
+          echo TEST_DRIVER_NAME=${{ secrets.TEST_DRIVER_NAME }} >> .env
+          echo TEST_DRIVER_BIRTHDAY=${{ secrets.TEST_DRIVER_BIRTHDAY }} >> .env
+          echo TEST_LICENSE_NUMBER=${{ secrets.TEST_LICENSE_NUMBER }} >> .env
+          echo TEST_SERIAL_NUMBER=${{ secrets.TEST_SERIAL_NUMBER }} >> .env
+      - name: Run unit tests
+        run: yarn test:unit:safedriving
