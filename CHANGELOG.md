@@ -1,3 +1,12 @@
+## <small>0.2.1 (2022-02-02)</small>
+
+* Add env to travis and refactor api unit test code ([cab1fc7](https://github.com/stevejkang/driver-license-verification/commit/cab1fc7))
+* Add more github action badge ([a43c2a6](https://github.com/stevejkang/driver-license-verification/commit/a43c2a6))
+* Enhance api unit test coverage and add actions ([3043fa5](https://github.com/stevejkang/driver-license-verification/commit/3043fa5)), closes [#9](https://github.com/stevejkang/driver-license-verification/issues/9)
+* Increase jest test timeout value ([f942e4a](https://github.com/stevejkang/driver-license-verification/commit/f942e4a))
+
+
+
 ## 0.2.0 (2022-01-19)
 
 * Support verification method without `serialNumber` ([07fc103](https://github.com/stevejkang/driver-license-verification/commit/07fc103))
