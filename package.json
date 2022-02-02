@@ -82,7 +82,8 @@
       "src/main.ts",
       "src/shared/core/ValueObject.ts",
       "src/shared/core/AggregateRoot.ts"
-    ]
+    ],
+    "testTimeout": 10000
   },
   "repository": {
     "type": "git",
