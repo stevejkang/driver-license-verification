@@ -3,6 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 // import { init as SentryInit } from '@sentry/node';
 import { AppModule } from './app.module';
+import { VerificationModule } from './verification/VerificationModule';
 
 export async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -29,5 +30,7 @@ export async function setupDocument(app: INestApplication) {
     customSiteTitle: 'Driver License Verification API',
   });
 }
+
+export { VerificationModule };
 
 bootstrap();
