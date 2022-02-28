@@ -6,3 +6,14 @@
 [![codecov](https://codecov.io/gh/stevejkang/driver-license-verification/branch/main/graph/badge.svg?token=BSN9FS9WXU)](https://codecov.io/gh/stevejkang/driver-license-verification)
 
 > An unofficial driver license verification crawler API service. (data from www.safedriving.or.kr and www.efine.go.kr)
+
+## Requirements
+- Node.js >= 15.14.0
+
+## Installation
+```bash
+git clone https://github.com/stevejkang/driver-license-verification.git && cd driver-license-verification
+npm install
+npm run start:dev
+# visit http://localhost:3000/docs
+```
