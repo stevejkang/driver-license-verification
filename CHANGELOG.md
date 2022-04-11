@@ -1,3 +1,16 @@
+## <small>0.2.2 (2022-04-11)</small>
+
+* Add codeql badge to readme document ([b34ed90](https://github.com/stevejkang/driver-license-verification/commit/b34ed90))
+* Add required node version and installation steps ([68e2997](https://github.com/stevejkang/driver-license-verification/commit/68e2997))
+* Bump follow-redirects from 1.14.7 to 1.14.9 ([481828a](https://github.com/stevejkang/driver-license-verification/commit/481828a))
+* Bump minimist from 1.2.5 to 1.2.6 ([c2eac87](https://github.com/stevejkang/driver-license-verification/commit/c2eac87))
+* Create codeql-analysis.yml ([55a0284](https://github.com/stevejkang/driver-license-verification/commit/55a0284))
+* Fix dependency security issue ([94f1954](https://github.com/stevejkang/driver-license-verification/commit/94f1954))
+* Increase jest test timeout value ([2af33df](https://github.com/stevejkang/driver-license-verification/commit/2af33df))
+* fix: package.json & yarn.lock to reduce vulnerabilities ([938aaed](https://github.com/stevejkang/driver-license-verification/commit/938aaed))
+
+
+
 ## <small>0.2.1 (2022-02-02)</small>
 
 * Add env to travis and refactor api unit test code ([cab1fc7](https://github.com/stevejkang/driver-license-verification/commit/cab1fc7))
