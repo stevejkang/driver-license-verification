@@ -19,3 +19,30 @@ npm install
 npm run start:dev
 # visit http://localhost:3000/docs
 ```
+
+---
+
+## Api Specification
+### Request
+`POST /verification`
+
+    curl -i --location --request POST 'http://localhost:3000/verification' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+      "driverName": "홍길동",
+      "driverBirthday": "2001-12-08",
+      "licenseNumber": "11-90-623000-00",
+      "serialNumber": "XXXXXX"
+    }'
+
+### Response
+
+    HTTP/1.1 200 OK
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 404 Not Found
+    Connection: close
+    Content-Type: application/json
+    Content-Length: 49
+    HTTP/1.1 200 OK
+
+    {"isSuccess": true,"verificationResult": "INVALID"}
