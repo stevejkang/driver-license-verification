@@ -11,7 +11,7 @@ cache:
   - node_modules
 install:
   - npm install
-before_script: 
+before_script:
   - cat .env.example | envsubst > .env
 scripts:
   - npm install -g codecov
